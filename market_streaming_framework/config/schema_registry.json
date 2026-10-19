@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinancialMarketTickSchema",
+  "version": "1.0.0",
+  "compatibility": "BACKWARD_TRANSITIVE",
+  "description": "Baseline transaction schema for high-throughput financial market order book tick events.",
+  "type": "object",
+  "properties": {
+    "sequence_id": {
+      "type": "integer",
+      "description": "Monotonically increasing 64-bit integer tick sequence identifier."
+    },
+    "timestamp_ns": {
+      "type": "integer",
+      "description": "UTC timestamp in nanoseconds since UNIX epoch."
+    },
+    "iso_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 formatted UTC timestamp string."
+    },
+    "symbol": {
+      "type": "string",
+      "pattern": "^[A-Z0-9.-]+$",
+      "description": "Standardized ticker symbol identifier (e.g. BTC-USD, SPY)."
+    },
+    "exchange": {
+      "type": "string",
+      "description": "Source market exchange identifier (e.g. NASDAQ, CME, BINANCE)."
+    },
+    "bid_price": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Top-of-book highest active bid price."
+    },
+    "ask_price": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Top-of-book lowest active ask price."
+    },
+    "bid_size": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Top-of-book total cumulative volume available at bid price."
+    },
+    "ask_size": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Top-of-book total cumulative volume available at ask price."
+    },
+    "last_trade_price": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Last execution match price."
+    },
+    "last_trade_size": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Last execution matched quantity."
+    },
+    "schema_version": {
+      "type": "string",
+      "default": "1.0.0",
+      "description": "Semantic versioning identifier of the emitting tick schema."
+    }
+  },
+  "required": [
+    "sequence_id",
+    "timestamp_ns",
+    "symbol",
+    "bid_price",
+    "ask_price",
+    "bid_size",
+    "ask_size"
+  ],
+  "additionalProperties": true
+}

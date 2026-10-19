@@ -1,0 +1,6 @@
+{
+  "name": "ChronosLake - Real-Time Financial Data Lake & Feature Store",
+  "description": "Enterprise event-driven financial market data lake and vectorized feature store with dynamic schema evolution, ring backpressure, and columnar parquet compaction.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
